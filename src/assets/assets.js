@@ -1,5 +1,4 @@
 import appointment_img from './appointment_img.png'
-import header_img from './FirstBanner.webp'
 import group_profiles from './group_profiles.png'
 import contact_image from './contact_image.png'
 import about_image from './about_image.png'
@@ -64,7 +63,7 @@ import earning_icon from './earning_icon.svg'
 import patients_icon from './patients_icon.svg'
 
 export const assets = {
-    appointment_img, header_img, group_profiles, logo, chats_icon,
+    appointment_img, group_profiles, logo, chats_icon,
     verified_icon, info_icon, arrow_icon, contact_image, about_image,
     menu_icon, cross_icon, dropdown_icon, upload_icon, add_icon,
     admin_logo, appointment_icon, cancel_icon, doctor_icon, upload_area,

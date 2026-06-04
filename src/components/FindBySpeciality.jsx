@@ -31,6 +31,8 @@ const FindBySpeciality = memo(() => {
               alt={item.speciality}
               loading="lazy"
               decoding="async"
+              width={80}
+              height={80}
               className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-full border border-gray-200 dark:border-gray-700"
             />
             <p className="text-sm sm:text-base font-medium text-gray-700 dark:text-gray-200 text-center">

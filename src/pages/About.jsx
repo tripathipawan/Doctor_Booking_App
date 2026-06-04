@@ -141,7 +141,8 @@ const About = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-3xl rotate-3 opacity-10" />
             <img
               src={assets.about_image}
-              alt="Healthcare professionals working together"
+              alt="Healthcare professionals working together" width={600} height={450}
+
               className="w-full max-w-md mx-auto lg:max-w-full rounded-3xl shadow-2xl object-cover aspect-[4/3] relative z-10"
               loading="lazy"
             />

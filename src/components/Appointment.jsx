@@ -67,6 +67,8 @@ const Appointment = () => {
             <img
               src={assets.appointment_img}
               alt="Doctor ready for consultation"
+              width={320}
+              height={320}
               className="relative z-10 w-48 sm:w-56 md:w-64 lg:w-72 xl:w-80 object-contain drop-shadow-2xl"
               loading="lazy"
             />

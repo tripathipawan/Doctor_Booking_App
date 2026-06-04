@@ -115,6 +115,8 @@ const DoctorProfile = () => {
               <img
                 src={doctor.image}
                 alt={`Dr. ${doctor.name}`}
+                width={288}
+                height={288}
                 className={`w-full h-full object-cover transition-opacity duration-500 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
                 onLoad={() => setImgLoaded(true)}
                 loading="eager"

@@ -1,8 +1,12 @@
 import React from "react";
 import { assets } from "../assets/assets";
-import { Link as ScrollLink } from "react-scroll";
 
 const Header = () => {
+  const scrollToSpeciality = () => {
+    const el = document.getElementById("speciality");
+    if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
+  };
+
   return (
     <div className="
       sm:mx-[5%] lg:mx-[10%]
@@ -34,10 +38,9 @@ const Header = () => {
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <img
             src={assets.group_profiles}
-            alt=""
+            alt="Group of doctor profiles"
             className="w-28 h-auto sm:w-32"
           />
-
           <h4 className="
             text-white dark:text-gray-300
             text-base sm:text-lg leading-5 text-center sm:text-left
@@ -47,10 +50,8 @@ const Header = () => {
           </h4>
         </div>
 
-        <ScrollLink
-          smooth={true}
-          duration={500}
-          to="speciality"
+        <button
+          onClick={scrollToSpeciality}
           className="
             bg-white dark:bg-gray-700
             text-[#595959] dark:text-gray-200
@@ -65,15 +66,17 @@ const Header = () => {
         >
           Book Appointment
           <img src={assets.arrow_icon} alt="" className="inline ml-2" />
-        </ScrollLink>
+        </button>
       </div>
 
       {/* RIGHT SIDE IMAGE */}
       <div className="w-full md:w-1/2 flex justify-center md:justify-end">
         <img
           src={assets.header_img}
-          alt="header"
+          alt="Doctor with patient"
           className="w-64 sm:w-72 md:w-80 lg:w-[380px] object-contain"
+          loading="eager"
+          fetchPriority="high"
         />
       </div>
     </div>

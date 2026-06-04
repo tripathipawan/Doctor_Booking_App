@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://appoint-your-doctor.vercel.app/sitemap.xml

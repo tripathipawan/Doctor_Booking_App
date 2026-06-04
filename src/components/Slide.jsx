@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { Link as ScrollLink } from "react-scroll";
 import { Link } from "react-router-dom";
 import {
   ArrowRight, CheckCircle, Star, Users,
@@ -19,6 +18,11 @@ const DOCTORS = [
   { name: "Dr. Arjun Mehta",  spec: "Neurologist",  time: "2:00 PM",  avail: false },
 ];
 
+const scrollToSpeciality = () => {
+  const el = document.getElementById("speciality");
+  if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
+};
+
 const Slide = () => (
   <section
     aria-label="Hero section"
@@ -28,7 +32,6 @@ const Slide = () => (
       minHeight: "100vh",
     }}
   >
-    {/* ── BG — no blur, just static shapes ── */}
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
       <div
         className="absolute inset-0 opacity-[0.04]"
@@ -94,12 +97,12 @@ const Slide = () => (
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-            <ScrollLink
-              smooth to="speciality" duration={400}
+            <button
+              onClick={scrollToSpeciality}
               className="inline-flex items-center justify-center gap-2 bg-white text-blue-700 font-bold px-8 py-3.5 rounded-xl text-sm cursor-pointer transition-colors hover:bg-blue-50 shadow-lg focus:outline-none focus:ring-2 focus:ring-white/50"
             >
               Book Appointment <ArrowRight size={16} />
-            </ScrollLink>
+            </button>
             <Link
               to="/alldoctors"
               className="inline-flex items-center justify-center gap-2 border text-white font-semibold px-8 py-3.5 rounded-xl text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-white/30"

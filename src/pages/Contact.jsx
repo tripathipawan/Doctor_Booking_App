@@ -290,7 +290,7 @@ const Contact = () => {
             {/* Image */}
             <div className="rounded-3xl overflow-hidden shadow-xl border border-gray-100 dark:border-gray-800 w-full">
               <img
-                src={assets.contact_image}
+                src={assets.contact_image} width={600} height={400}
                 alt="Our friendly healthcare team ready to help you"
                 className="w-full h-48 sm:h-56 lg:h-60 object-cover"
                 loading="lazy"
