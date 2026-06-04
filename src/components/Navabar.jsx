@@ -23,7 +23,7 @@ const Navbar = () => {
   const navigate                      = useNavigate();
   const location                      = useLocation();
   const { user, logout }              = useAuth();
-  const { darkMode, toggleTheme }     = useTheme(); // ✅ shared context
+  const { darkMode, toggleTheme }     = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -58,7 +58,6 @@ const Navbar = () => {
           ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-md dark:shadow-gray-800/50"
           : "bg-white dark:bg-gray-900"
       }`}
-      role="navigation"
       aria-label="Main navigation"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
@@ -93,7 +92,7 @@ const Navbar = () => {
             </Link>
           ))}
 
-          {/* ✅ Theme toggle — now uses shared context */}
+          {/* Theme toggle */}
           <button
             onClick={toggleTheme}
             className="ml-2 p-2.5 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
@@ -110,7 +109,7 @@ const Navbar = () => {
               <button
                 onClick={() => setProfileOpen((p) => !p)}
                 aria-expanded={profileOpen}
-                aria-haspopup="true"
+                aria-haspopup="menu"
                 className="flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-all text-sm font-medium"
               >
                 <div className="w-7 h-7 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold select-none">
@@ -120,7 +119,6 @@ const Navbar = () => {
                 <ChevronDown size={14} className={`transition-transform duration-200 ${profileOpen ? "rotate-180" : ""}`} />
               </button>
 
-              {/* ✅ will-change: transform — GPU composite layer */}
               {profileOpen && (
                 <div
                   className="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 py-2 z-50"
@@ -232,4 +230,3 @@ const Navbar = () => {
 };
 
 export default memo(Navbar);
-

@@ -1,26 +1,41 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="./src/assets/doctor_icon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Appoint Your Doctor — Book Top Doctors Near You</title>
-  <meta name="description" content="Book appointments with 40+ trusted doctors across 10 specialities. Instant booking, real-time slot availability, no hidden fees." />
+  <meta name="description"
+    content="Book appointments with 40+ trusted doctors across 10 specialities. Instant booking, real-time slot availability, no hidden fees." />
   <meta name="author" content="Appoint Your Doctor" />
   <meta name="keywords" content="doctor booking, appointment, specialist, physician, healthcare India" />
   <meta property="og:title" content="Appoint Your Doctor — Book Top Doctors Near You" />
-  <meta property="og:description" content="Book appointments with 40+ verified specialists. Instant booking, no hidden fees." />
+  <meta property="og:description"
+    content="Book appointments with 40+ verified specialists. Instant booking, no hidden fees." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://appoint-your-doctor.vercel.app" />
   <meta name="theme-color" content="#1d4ed8" />
   <link rel="canonical" href="https://appoint-your-doctor.vercel.app/" />
+
+  <!-- Preconnect to font origins -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="dns-prefetch" href="https://firestore.googleapis.com" />
   <link rel="dns-prefetch" href="https://identitytoolkit.googleapis.com" />
+
+  <!-- Non-render-blocking font load (fixes CLS 0.905 + removes 280ms render-blocking) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap"
+    as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" />
+  </noscript>
 </head>
+
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
+
 </html>

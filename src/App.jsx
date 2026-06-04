@@ -7,17 +7,20 @@ import { PageLoader } from "./components/LoadingSkeletons";
 import ProtectedRoute from "./ProtectedRoute";
 import AdminRoute from "./AdminRoute";
 
-const Home = lazy(() => import("./pages/Home"));
-const Login = lazy(() => import("./pages/Login"));
-const AllDoctors = lazy(() => import("./pages/AllDoctors"));
-const DoctorProfile = lazy(() => import("./pages/DoctorProfile"));
+// Home is NOT lazy — it's the landing page, lazy loading causes CLS 0.905
+import Home from "./pages/Home";
+
+// All other pages stay lazy
+const Login           = lazy(() => import("./pages/Login"));
+const AllDoctors      = lazy(() => import("./pages/AllDoctors"));
+const DoctorProfile   = lazy(() => import("./pages/DoctorProfile"));
 const SpecialityDoctors = lazy(() => import("./pages/SpecialityDoctors"));
-const About = lazy(() => import("./pages/About"));
-const Contact = lazy(() => import("./pages/Contact"));
-const MyAppointments = lazy(() => import("./pages/MyAppointments"));
-const AdminPanel = lazy(() => import("./pages/AdminPanel"));
-const AdminLogin = lazy(() => import("./pages/AdminLogin"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+const About           = lazy(() => import("./pages/About"));
+const Contact         = lazy(() => import("./pages/Contact"));
+const MyAppointments  = lazy(() => import("./pages/MyAppointments"));
+const AdminPanel      = lazy(() => import("./pages/AdminPanel"));
+const AdminLogin      = lazy(() => import("./pages/AdminLogin"));
+const NotFound        = lazy(() => import("./pages/NotFound"));
 
 const App = () => {
   const location  = useLocation();
@@ -31,27 +34,20 @@ const App = () => {
         <main className="flex-grow" id="main-content">
           <Suspense fallback={<PageLoader />}>
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/"          element={<Home />} />
+              <Route path="/login"     element={<Login />} />
               <Route path="/alldoctors" element={<AllDoctors />} />
               <Route path="/doctorprofile/:id" element={<DoctorProfile />} />
               <Route path="/doctors/speciality/:speciality" element={<SpecialityDoctors />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-
-              {/* Admin login is PUBLIC */}
+              <Route path="/about"     element={<About />} />
+              <Route path="/contact"   element={<Contact />} />
               <Route path="/admin-login" element={<AdminLogin />} />
-
-              {/* Protected — logged-in users only */}
               <Route path="/my-appointments" element={
                 <ProtectedRoute><MyAppointments /></ProtectedRoute>
               } />
-
-              {/* Admin panel — admin email only */}
               <Route path="/admin-panel" element={
                 <AdminRoute><AdminPanel /></AdminRoute>
               } />
-
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
@@ -64,4 +60,3 @@ const App = () => {
 };
 
 export default App;
-
