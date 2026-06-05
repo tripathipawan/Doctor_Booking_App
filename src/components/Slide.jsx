@@ -18,9 +18,9 @@ const DOCTORS = [
   { name: "Dr. Arjun Mehta",  spec: "Neurologist",  time: "2:00 PM",  avail: false },
 ];
 
+// ✅ scrollIntoView use kiya — offsetTop nahi (no forced reflow)
 const scrollToSpeciality = () => {
-  const el = document.getElementById("speciality");
-  if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
+  document.getElementById("speciality")?.scrollIntoView({ behavior: "smooth" });
 };
 
 const Slide = () => (
@@ -48,23 +48,19 @@ const Slide = () => (
     </div>
 
     <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-      {/* ══ MAIN GRID ══ */}
       <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14 py-16 sm:py-20 lg:py-24">
 
         {/* ── LEFT TEXT ── */}
         <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-5 max-w-xl mx-auto lg:mx-0">
 
-          {/* Badge */}
           <div className="inline-flex items-center gap-2 rounded-full px-4 py-2"
             style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.20)" }}>
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
-            <span className="text-white/90 text-xs sm:text-sm font-medium">
+            <span className="text-white text-xs sm:text-sm font-medium">
               Trusted by 50,000+ patients across India
             </span>
           </div>
 
-          {/* Heading */}
           <h1 className="text-4xl sm:text-5xl lg:text-[3.2rem] xl:text-6xl font-black text-white leading-[1.1] tracking-tight">
             Find & Book{" "}
             <span style={{
@@ -76,26 +72,26 @@ const Slide = () => (
             </span>
             <br />
             Near You —{" "}
-            <span className="text-white/50">Instantly</span>
+            {/* ✅ text-white/50 → text-white/75 (contrast fix) */}
+            <span className="text-white/75">Instantly</span>
           </h1>
 
-          {/* Subtext */}
-          <p className="text-white/60 text-base sm:text-lg leading-relaxed max-w-md">
+          {/* ✅ text-white/60 → text-white/80 (contrast fix) */}
+          <p className="text-white/80 text-base sm:text-lg leading-relaxed max-w-md">
             Browse 40+ verified specialists across 10 specialities. Choose your slot, book in seconds, and get expert care without the wait.
           </p>
 
-          {/* Features */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-sm lg:max-w-none">
             {["Instant booking confirmation", "No hidden fees",
-              "Real-time slot availability",  "Cancel anytime"].map((f) => (
+              "Real-time slot availability", "Cancel anytime"].map((f) => (
               <div key={f} className="flex items-center gap-2">
                 <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                <span className="text-white/70 text-sm">{f}</span>
+                {/* ✅ text-white/70 → text-white/85 (contrast fix) */}
+                <span className="text-white/85 text-sm">{f}</span>
               </div>
             ))}
           </div>
 
-          {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <button
               onClick={scrollToSpeciality}
@@ -112,7 +108,6 @@ const Slide = () => (
             </Link>
           </div>
 
-          {/* Stats */}
           <div className="flex flex-wrap gap-7 justify-center lg:justify-start pt-1">
             {[
               { val: "40+",  lbl: "Doctors"      },
@@ -122,13 +117,14 @@ const Slide = () => (
             ].map(({ val, lbl }) => (
               <div key={val} className="text-center lg:text-left">
                 <p className="text-xl font-black text-white leading-none">{val}</p>
-                <p className="text-white/40 text-xs mt-0.5">{lbl}</p>
+                {/* ✅ text-white/40 → text-white/60 (contrast fix) */}
+                <p className="text-white/60 text-xs mt-0.5">{lbl}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* ── RIGHT CARD — NO backdrop-blur ── */}
+        {/* ── RIGHT CARD ── */}
         <div className="flex-1 w-full max-w-sm sm:max-w-md lg:max-w-none">
           <div
             className="rounded-3xl p-5 sm:p-6 shadow-2xl border"
@@ -137,11 +133,11 @@ const Slide = () => (
               borderColor: "rgba(255,255,255,0.18)",
             }}
           >
-            {/* Card header */}
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="text-white font-bold text-base sm:text-lg">Available Doctors</h3>
-                <p className="text-white/50 text-xs mt-0.5">Choose your specialist</p>
+                {/* ✅ h3 → p (heading order fix: h1 ke baad h3 skip hota tha) */}
+                <p className="text-white font-bold text-base sm:text-lg">Available Doctors</p>
+                <p className="text-white/60 text-xs mt-0.5">Choose your specialist</p>
               </div>
               <span className="flex items-center gap-1.5 text-green-400 text-xs font-semibold px-3 py-1 rounded-full"
                 style={{ background: "rgba(74,222,128,0.15)", border: "1px solid rgba(74,222,128,0.25)" }}>
@@ -150,7 +146,6 @@ const Slide = () => (
               </span>
             </div>
 
-            {/* Speciality chips */}
             <div className="flex flex-wrap gap-1.5 mb-4">
               {SPECIALITIES.map((s, i) => (
                 <Link
@@ -160,7 +155,7 @@ const Slide = () => (
                   style={{
                     background: i === 0 ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.08)",
                     border: "1px solid rgba(255,255,255,0.15)",
-                    color: i === 0 ? "#fff" : "rgba(255,255,255,0.6)",
+                    color: i === 0 ? "#fff" : "rgba(255,255,255,0.75)",
                   }}
                 >
                   {s}
@@ -168,7 +163,6 @@ const Slide = () => (
               ))}
             </div>
 
-            {/* Doctor rows */}
             <div className="flex flex-col gap-2.5 mb-4">
               {DOCTORS.map(({ name, spec, time, avail }) => (
                 <div
@@ -186,11 +180,11 @@ const Slide = () => (
                     </div>
                     <div>
                       <p className="text-white text-xs font-semibold leading-tight">{name}</p>
-                      <p className="text-white/40 text-[11px]">{spec}</p>
+                      <p className="text-white/60 text-[11px]">{spec}</p>
                     </div>
                   </div>
                   <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-full ${
-                    avail ? "text-green-400" : "text-white/30"
+                    avail ? "text-green-400" : "text-white/50"
                   }`} style={{
                     background: avail ? "rgba(74,222,128,0.15)" : "rgba(255,255,255,0.06)",
                   }}>
@@ -200,10 +194,9 @@ const Slide = () => (
               ))}
             </div>
 
-            {/* Footer */}
             <Link
               to="/alldoctors"
-              className="w-full flex items-center justify-center gap-2 text-white/80 text-sm font-medium py-3 rounded-2xl border transition-colors"
+              className="w-full flex items-center justify-center gap-2 text-white/85 text-sm font-medium py-3 rounded-2xl border transition-colors"
               style={{
                 background: "rgba(255,255,255,0.08)",
                 borderColor: "rgba(255,255,255,0.13)",
@@ -218,7 +211,7 @@ const Slide = () => (
       {/* ══ TRUST BAR ══ */}
       <div className="border-t py-5 sm:py-6 flex flex-wrap items-center justify-center lg:justify-between gap-4"
         style={{ borderColor: "rgba(255,255,255,0.10)" }}>
-        <p className="text-white/25 text-[10px] uppercase tracking-widest font-semibold">Trusted & Certified</p>
+        <p className="text-white/50 text-[10px] uppercase tracking-widest font-semibold">Trusted & Certified</p>
         <div className="flex flex-wrap justify-center gap-6 sm:gap-10">
           {[
             { icon: Shield, txt: "HIPAA Compliant" },
@@ -226,7 +219,7 @@ const Slide = () => (
             { icon: Clock,  txt: "24/7 Support"    },
             { icon: Users,  txt: "50K+ Patients"   },
           ].map(({ icon: Icon, txt }) => (
-            <div key={txt} className="flex items-center gap-1.5 text-white/35">
+            <div key={txt} className="flex items-center gap-1.5 text-white/55">
               <Icon size={14} />
               <span className="text-xs font-medium">{txt}</span>
             </div>
