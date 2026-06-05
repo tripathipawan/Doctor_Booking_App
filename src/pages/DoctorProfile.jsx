@@ -188,7 +188,7 @@ const DoctorProfile = () => {
                   key={day}
                   onClick={() => { setSelectedDay(day); setSelectedTime(null); }}
                   aria-pressed={selectedDay === day}
-                  className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all border focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  className={`px-3 text-black py-2 rounded-xl text-xs sm:text-sm font-medium transition-all border focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                     selectedDay === day
                       ? "bg-blue-500 text-white border-blue-500 shadow-md"
                       : "bg-white dark:bg-gray-700 dark:text-white border-gray-200 dark:border-gray-600 hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30"
@@ -217,7 +217,7 @@ const DoctorProfile = () => {
                       disabled={booked}
                       aria-pressed={selectedTime === time}
                       title={mine ? "Your existing booking" : booked ? "Already booked" : ""}
-                      className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all border focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      className={`px-3 py-2 text-black rounded-xl text-xs sm:text-sm font-medium transition-all border focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                         mine
                           ? "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-300 dark:border-amber-700 cursor-not-allowed"
                           : booked

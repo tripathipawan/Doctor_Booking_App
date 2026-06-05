@@ -1,4 +1,31 @@
+# Appoint Your Doctor — robots.txt
 User-agent: *
+Allow: /
+
+Disallow: /admin-login
+Disallow: /admin-panel
+Disallow: /my-appointments
+
+# GEO — AI crawlers explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://appoint-your-doctor.vercel.app/sitemap.xml
