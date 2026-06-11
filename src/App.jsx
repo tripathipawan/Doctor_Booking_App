@@ -7,10 +7,8 @@ import { PageLoader } from "./components/LoadingSkeletons";
 import ProtectedRoute from "./ProtectedRoute";
 import AdminRoute from "./AdminRoute";
 
-// Home is NOT lazy — it's the landing page, lazy loading causes CLS 0.905
 import Home from "./pages/Home";
 
-// All other pages stay lazy
 const Login           = lazy(() => import("./pages/Login"));
 const AllDoctors      = lazy(() => import("./pages/AllDoctors"));
 const DoctorProfile   = lazy(() => import("./pages/DoctorProfile"));
